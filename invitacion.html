@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación de 15 Años - Cristina</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1e0e6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background-color: #e5c1d1;
+      text-align: center;
+      padding: 50px 0;
+    }
+    h1 {
+      font-size: 3em;
+      color: #e5005d;
+    }
+    .countdown {
+      font-size: 2em;
+      color: #333;
+    }
+    .content {
+      padding: 20px;
+      text-align: center;
+    }
+    .message {
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+    .event-details {
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: #333;
+    }
+    .form-container {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .form-container input, .form-container textarea {
+      padding: 10px;
+      font-size: 1em;
+      width: 300px;
+      margin-top: 10px;
+    }
+    .form-container button {
+      background-color: #e5005d;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    .form-container button:hover {
+      background-color: #d40050;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>¡Los 15 Años de Cristina!</h1>
+    <p class="countdown" id="countdown"></p>
+  </div>
+
+  <div class="content">
+    <p class="message">¡Estás invitado a una noche muy especial!</p>
+    <p class="event-details">
+      <strong>Fecha:</strong> 19 de Julio del 2025 a las 20:00<br>
+      <strong>Lugar:</strong> La Libertad, Salón de Eventos Galilea
+    </p>
+
+    <div class="form-container">
+      <h3>¡Confirma tu asistencia!</h3>
+      <form action="https://forms.gle/7BUusZhGB8WyAP4j9" method="POST">
+        <input type="text" name="nombre" placeholder="Tu Nombre" required><br>
+        <textarea name="mensaje" placeholder="Deja un mensaje especial para Cristina" required></textarea><br>
+        <button type="submit">Confirmar Asistencia</button>
+      </form>
+    </div>
+  </div>
+
+  <audio autoplay loop>
+    <source src="https://www.youtube.com/watch?v=lN9BdMqehYg" type="audio/mp3">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+
+  <script>
+    // Configuración de la fecha del evento
+    var eventDate = new Date("July 19, 2025 20:00:00").getTime();
+
+    // Actualizar el contador cada 1 segundo
+    var countdownFunction = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = eventDate - now;
+
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML = days + " días " + hours + " horas " + minutes + " minutos " + seconds + " segundos ";
+
+      // Si el contador termina
+      if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.getElementById("countdown").innerHTML = "¡Es el gran día!";
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
